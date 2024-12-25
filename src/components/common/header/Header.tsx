@@ -1,7 +1,9 @@
+import { HeaderBasket } from "../../ecommerce";
 import { Badge, Container, Nav, Navbar } from "react-bootstrap";
 import styles from "./styles.module.css";
 
-const { headerContainer , headerLogo} = styles;
+const { headerContainer, headerLogo } = styles;
+
 function Header() {
   return (
     <header>
@@ -10,6 +12,7 @@ function Header() {
           <span>Yamen</span>
           <Badge bg="success">Store</Badge>
         </h1>
+        <HeaderBasket />
       </div>
       <Navbar
         expand="lg"
@@ -22,8 +25,8 @@ function Header() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Categories</Nav.Link>
-              <Nav.Link href="#link">About</Nav.Link>
+              <Nav.Link href="#Categories">Categories</Nav.Link>
+              <Nav.Link href="#about">About</Nav.Link>
             </Nav>
             <Nav>
               <Nav.Link href="#login">Login</Nav.Link>
