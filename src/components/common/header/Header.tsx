@@ -1,3 +1,4 @@
+import { NavLink } from "react-router";
 import { HeaderBasket } from "../../ecommerce";
 import { Badge, Container, Nav, Navbar } from "react-bootstrap";
 import styles from "./styles.module.css";
@@ -8,10 +9,11 @@ function Header() {
   return (
     <header>
       <div className={headerContainer}>
-        <h1 className={headerLogo}>
-          <span>Yamen</span>
-          <Badge bg="success">Store</Badge>
-        </h1>
+        <NavLink to="/" className=" text-decoration-none text-dark">
+          <h1 className={headerLogo}>
+            <Badge bg="success">Yamen Store</Badge>
+          </h1>
+        </NavLink>
         <HeaderBasket />
       </div>
       <Navbar
@@ -24,13 +26,23 @@ function Header() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#Categories">Categories</Nav.Link>
-              <Nav.Link href="#about">About</Nav.Link>
+              <Nav.Link as={NavLink} to="/">
+                Home
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/categories">
+                Categories
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/about">
+                About
+              </Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link href="#login">Login</Nav.Link>
-              <Nav.Link href="#register">Register</Nav.Link>
+              <Nav.Link as={NavLink} to="/login">
+                Login
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/register">
+                Register
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
