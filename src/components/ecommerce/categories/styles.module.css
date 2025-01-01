@@ -1,0 +1,23 @@
+.category {
+  width: 100px;height: 180px;
+}
+
+.categoryImg {
+  overflow: hidden;
+  background-color: #f2f2f2;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.categoryImg img {
+  width: 100%;
+}
+
+.categoryTitle {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}

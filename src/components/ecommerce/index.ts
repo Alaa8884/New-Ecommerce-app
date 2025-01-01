@@ -1,3 +1,3 @@
 import HeaderBasket from "./headerBasket/HeaderBasket";
-
-export {HeaderBasket}
+import Category from "./categories/Category"; import Product from "./product/Product";
+export { HeaderBasket, Category, Product };
