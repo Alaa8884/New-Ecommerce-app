@@ -20,7 +20,6 @@ const categoriesSlice = createSlice({
     builder.addCase(actGetCategories.pending, (state) => {
       state.loading = "pending";
       state.error = null;
-      state.records = [];
     });
     builder.addCase(actGetCategories.fulfilled, (state, action) => {
       state.loading = "succeeded";
@@ -28,10 +27,11 @@ const categoriesSlice = createSlice({
     });
     builder.addCase(actGetCategories.rejected, (state, action) => {
       state.loading = "failed";
-      if (action.payload && typeof action.payload ===)
-      state.error = action.payload;
+      if (action.payload && typeof action.payload === "string")
+        state.error = action.payload;
     });
   },
 });
 
+export { actGetCategories };
 export default categoriesSlice.reducer;

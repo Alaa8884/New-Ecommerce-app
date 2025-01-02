@@ -1,5 +1,6 @@
 .category {
-  width: 100px;height: 180px;
+  width: 100px;
+  height: 180px;
 }
 
 .categoryImg {
@@ -14,6 +15,20 @@
 
 .categoryImg img {
   width: 100%;
+}
+
+.category a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.4s;
+  -webkit-transition: color 0.4s;
+  -moz-transition: color 0.4s;
+  -ms-transition: color 0.4s;
+  -o-transition: color 0.4s;
+}
+
+.category a:hover {
+  color: #198754;
 }
 
 .categoryTitle {
