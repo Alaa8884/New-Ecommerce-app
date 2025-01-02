@@ -33,7 +33,7 @@ function Header() {
                 Categories
               </Nav.Link>
               <Nav.Link as={NavLink} to="/about">
-                About
+                About Us
               </Nav.Link>
             </Nav>
             <Nav>
