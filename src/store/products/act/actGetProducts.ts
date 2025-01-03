@@ -6,8 +6,8 @@ import { TProducts } from "@customTypes/product";
 type TResponse = TProducts[]
 
 const actGetProducts = createAsyncThunk(
-  "categories/actGetProducts",
-  async (prefix, thunkAPI) => {
+  "products/actGetProducts",
+  async (prefix:string, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
       const response = await axios.get<TResponse>(

@@ -2,20 +2,20 @@ import { createSlice } from "@reduxjs/toolkit";
 import actGetProducts from "./act/actGetProducts";
 import { TLoading } from "@customTypes/shared";
 import { TProducts } from "@customTypes/product";
-interface ICategories {
+interface IProductsState {
   records: TProducts[];
   loading: TLoading;
   error: string | null;
 }
 
-const initialState: ICategories = {
+const initialState: IProductsState = {
   records: [],
   loading: "idle",
   error: null,
 };
 
 const productsSlice = createSlice({
-  name: "categories",
+  name: "products",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
