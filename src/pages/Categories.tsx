@@ -13,6 +13,7 @@ function Categories() {
   useEffect(() => {
     dispatch(actGetCategories());
   }, [dispatch]);
+  if (loading === "pending") return <div>Loading...</div>
   const categoriesList =
     records.length > 0
       ? records.map((record) => (
