@@ -11,13 +11,14 @@ function Categories() {
   );
 
   useEffect(() => {
-    dispatch(actGetCategories());
-  }, [dispatch]);
-  if (loading === "pending") return <div>Loading...</div>
+    if (!records.length) {
+      dispatch(actGetCategories());
+    }
+  }, [dispatch, records]);
+  if (loading === "pending") return <div>Loading...</div>;
   const categoriesList =
     records.length > 0
       ? records.map((record) => (
-        
           <Col
             md="6"
             xs="3"
@@ -30,7 +31,7 @@ function Categories() {
       : "There are no categories to display";
   return (
     <Container>
-      <Row>{categoriesList}</Row>
+      <Row lg="4" md="3" sm="12">{categoriesList}</Row>
     </Container>
   );
 }
