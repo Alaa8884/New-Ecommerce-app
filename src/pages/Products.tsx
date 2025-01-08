@@ -24,7 +24,6 @@ const Products = () => {
       ? records.map((record) => {
           return (
             <Col
-            lg="4"
               xs={6}
               md={3}
               className="d-flex justify-content-center mb-5 mt-2"
