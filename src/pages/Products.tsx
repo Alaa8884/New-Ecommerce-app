@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actGetProducts, productsCleanUp } from "@store/products/productsSlice";
 import { Container, Row, Col } from "react-bootstrap";
 import { Product } from "@components/ecommerce";
+import { Loading } from "@components/feedbback";
 const Products = () => {
   const params = useParams();
   const dispatch = useAppDispatch();
@@ -23,6 +24,7 @@ const Products = () => {
       ? records.map((record) => {
           return (
             <Col
+            lg="4"
               xs={6}
               md={3}
               className="d-flex justify-content-center mb-5 mt-2"
@@ -35,7 +37,10 @@ const Products = () => {
       : "No products found";
   return (
     <Container>
-      <Row>{productsList}</Row>
+      {" "}
+      <Loading loading={loading} error={error}>
+        <Row>{productsList}</Row>{" "}
+      </Loading>
     </Container>
   );
 };

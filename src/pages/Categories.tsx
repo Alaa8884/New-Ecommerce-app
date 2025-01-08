@@ -3,6 +3,7 @@ import { actGetCategories } from "@store/categories/categoriesSlice";
 import { Category } from "@components/ecommerce";
 import { Col, Container, Row } from "react-bootstrap";
 import { useEffect } from "react";
+import { Loading } from "@components/feedbback";
 
 function Categories() {
   const dispatch = useAppDispatch();
@@ -19,9 +20,10 @@ function Categories() {
   const categoriesList =
     records.length > 0
       ? records.map((record) => (
-          <Col
+        <Col
+          lg="4"
             md="6"
-            xs="3"
+            xs="12"
             className=" d-flex justify-content-center mb-5 mt-2"
             key={record.id}
           >
@@ -31,7 +33,10 @@ function Categories() {
       : "There are no categories to display";
   return (
     <Container>
-      <Row lg="4" md="3" sm="12">{categoriesList}</Row>
+      <Loading loading={loading} error={error}>
+        {" "}
+        <Row>{categoriesList}</Row>
+      </Loading>
     </Container>
   );
 }
