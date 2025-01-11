@@ -2,9 +2,10 @@ import { useEffect } from "react";
 import { useParams } from "react-router";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actGetProducts, productsCleanUp } from "@store/products/productsSlice";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { Product } from "@components/ecommerce";
 import { Loading } from "@components/feedbback";
+import { GridList } from "@components/common";
 const Products = () => {
   const params = useParams();
   const dispatch = useAppDispatch();
@@ -19,26 +20,13 @@ const Products = () => {
     return ()=> {dispatch(productsCleanUp())}
   }, [dispatch, params]);
 
-  const productsList =
-    records.length > 0
-      ? records.map((record) => {
-          return (
-            <Col
-              xs={6}
-              md={3}
-              className="d-flex justify-content-center mb-5 mt-2"
-              key={record.id}
-            >
-              <Product {...record} />
-            </Col>
-          );
-        })
-      : "No products found";
+ 
   return (
     <Container>
       {" "}
       <Loading loading={loading} error={error}>
-        <Row>{productsList}</Row>{" "}
+        <GridList records={records} renderItem={(record) => <Product {...record} />}
+        />
       </Loading>
     </Container>
   );
