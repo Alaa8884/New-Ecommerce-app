@@ -28,12 +28,13 @@ const rootReducer = combineReducers({
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [REHYDRATE, PAUSE, PERSIST, PURGE, FLUSH, REGISTER],
-    },
-  })
-})
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [REHYDRATE, PAUSE, PERSIST, PURGE, FLUSH, REGISTER],
+      },
+    }),
+});
 
 export type RootState = ReturnType<typeof store.getState>;
 
