@@ -1,15 +1,30 @@
 import { useAppDispatch } from "@store/hooks";
-import { Button } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Button, Spinner } from "react-bootstrap";
 import styles from "./styles.module.css";
 import { TProducts } from "@customTypes/product";
 import { addToCart } from "@store/cart/cartSlice";
+
+
 const { product, productImg } = styles;
 
 const Product = ({ id, title, img, price }: TProducts) => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
+  const [isBtnClicked, setIsBtnClicked] = useState(0);
+  const [isBtnDisabled, setIsBtnDisabled] = useState(false);
+
+  useEffect(() => {
+    if (!isBtnClicked) return;
+    setIsBtnDisabled(true);
+    const clickTimer = setTimeout(() => {
+      setIsBtnDisabled(false);
+    }, 300);
+    return () => clearTimeout(clickTimer);
+  }, [isBtnClicked]);
 
   function handlerAddToCart() {
-    dispatch(addToCart(id))
+    dispatch(addToCart(id));
+    setIsBtnClicked((prev) => prev + 1);
   }
   return (
     <div className={product}>
@@ -22,8 +37,10 @@ const Product = ({ id, title, img, price }: TProducts) => {
         variant="info"
         style={{ color: "white" }}
         onClick={handlerAddToCart}
+        disabled={isBtnDisabled}
       >
-        Add to cart
+        {isBtnDisabled ? <><Spinner animation="border" size="sm"/> Loading....</> :  "Add to cart"}
+       
       </Button>
     </div>
   );
