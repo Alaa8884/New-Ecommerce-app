@@ -4,7 +4,6 @@ import { TCategory } from "@customTypes/category";
 const { category, categoryImg, categoryTitle } = styles;
 
 function Category({ title, img, prefix }: TCategory) {
-  console.log(prefix);
   return (
     <div className={category}>
       <Link to={`/categories/products/${prefix}`}>

@@ -5,4 +5,5 @@ export type TProducts = {
   img: string;
   cat_prefix: string;
   price: string;
+  quantity?: number;
 };
