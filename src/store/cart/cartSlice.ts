@@ -28,6 +28,7 @@ const cartSlice = createSlice({
   },
 });
 
+
 export { getCartTotalQuantitySelector };
 
 export const { addToCart } = cartSlice.actions;
