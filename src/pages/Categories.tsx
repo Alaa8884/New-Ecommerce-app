@@ -4,7 +4,7 @@ import { Category } from "@components/ecommerce";
 import { Container } from "react-bootstrap";
 import { useEffect } from "react";
 import { Loading } from "@components/feedbback";
-import { GridList } from "@components/common";
+import { GridList, Heading } from "@components/common";
 
 function Categories() {
   const dispatch = useAppDispatch();
@@ -20,6 +20,7 @@ function Categories() {
 
   return (
     <Container>
+      <Heading>Categories</Heading>
       <Loading loading={loading} error={error}>
         <GridList
           records={records}

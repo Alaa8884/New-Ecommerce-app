@@ -4,6 +4,7 @@ import AppRouter from "@routes/AppRouter";
 import { store, persistor } from "@store/index";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import "./services/API/axios-global.js"
 createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
     <PersistGate loading={"loading"} persistor={persistor}>
