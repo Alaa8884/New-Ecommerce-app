@@ -13,7 +13,7 @@
 }
 
 .productImg img {
-  height: 100%;  
+  height: 100%;
 }
 
 .product h2 {
@@ -25,4 +25,13 @@
 
 .product h3 {
   font-size: 13px;
+}
+
+.maxNotice {
+  font-size: 12px;
+  margin-bottom: 7px;
+}
+
+button:disabled {
+  cursor: not-allowed;
 }
