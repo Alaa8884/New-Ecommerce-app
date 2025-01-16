@@ -43,6 +43,9 @@ function Header() {
               <Nav.Link as={NavLink} to="/register">
                 Register
               </Nav.Link>
+              <Nav.Link as={NavLink} to="/cart">
+                Cart
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

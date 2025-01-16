@@ -7,6 +7,7 @@ import Products from "@pages/Products";
 import Login from "@pages/Login";
 import Register from "@pages/Register";
 import Error from "@pages/Error";
+import ShoppingCart from "@pages/ShoppingCart";
 
 const router = createBrowserRouter([
   {
@@ -19,11 +20,11 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "categories",
+        path: "/categories",
         element: <Categories />,
       },
       {
-        path: "categories/products/:prefix",
+        path: "/categories/products/:prefix",
         element: <Products />,
         loader: ({ params }) => {
           if (
@@ -39,16 +40,20 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "about",
+        path: "/about",
         element: <About />,
       },
       {
-        path: "login",
+        path: "/login",
         element: <Login />,
       },
       {
-        path: "register",
+        path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/cart",
+        element: <ShoppingCart />,
       },
     ],
   },
