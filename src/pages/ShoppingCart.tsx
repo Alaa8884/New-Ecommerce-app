@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 import {
   actGetProductsByItem,
   cartItemChangeQuantity,
+  cartItemRemoveQuantity,
 } from "@store/cart/cartSlice";
 import { Heading } from "@components/common";
 import { Loading } from "@components/feedbback";
@@ -17,27 +18,38 @@ function ShoppingCart() {
     dispatch(actGetProductsByItem());
   }, [dispatch]);
 
-
   const products = productFullInfo.map((el) => ({
     ...el,
     quantity: cartItems[el.id],
   }));
-  
 
-  const changeQuantityHandler = useCallback((id: number, quantity: number) => {
-  dispatch(cartItemChangeQuantity({id, quantity}));
-},[dispatch])
+  const changeQuantityHandler = useCallback(
+    (id: number, quantity: number) => {
+      dispatch(cartItemChangeQuantity({ id, quantity }));
+    },
+    [dispatch]
+  );
+
+  const removeItemHandler = useCallback((id: number) => {
+    dispatch(cartItemRemoveQuantity(id));
+  }, []);
 
   return (
     <>
       <Heading>Cart</Heading>
       <Loading loading={loading} error={error}>
         {!products.length ? (
-          <div className=" d-flex display-5 fw-bold m-auto">Your Cart is empty</div>
+          <div className=" d-flex display-5 fw-bold m-auto">
+            Your Cart is empty
+          </div>
         ) : (
           <>
             {" "}
-              <CartItemList products={products} changeQuantityHandler={changeQuantityHandler} />
+            <CartItemList
+              products={products}
+              changeQuantityHandler={changeQuantityHandler}
+              removeItemHandler={removeItemHandler}
+            />
             <CartTotalPrice />
           </>
         )}

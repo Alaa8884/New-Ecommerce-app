@@ -8,66 +8,70 @@ const { cartItem, product, productImg, productInfo, cartItemSelection } =
 
 type cartItemProps = TProducts & {
   changeQuantityHandler: (id: number, quantity: number) => void;
+  removeItemHandler: (id:number)=> void
 };
 
-const  CartItem = memo(({
-  id,
-  title,
-  price,
-  img,
-  max,
-  quantity,
-  changeQuantityHandler,
-}: cartItemProps)=> {
-  
-  const renderQuantityList = Array(max)
-    .fill(0)
-    .map((_, index) => {
-      const quantity = ++index;
-      return (
-        <option value={quantity} key={quantity}>
-          {" "}
-          {quantity}
-        </option>
-      );
-    });
+const CartItem = memo(
+  ({
+    id,
+    title,
+    price,
+    img,
+    max,
+    quantity,
+    changeQuantityHandler,
+    removeItemHandler,
+  }: cartItemProps) => {
+    const renderQuantityList = Array(max)
+      .fill(0)
+      .map((_, index) => {
+        const quantity = ++index;
+        return (
+          <option value={quantity} key={quantity}>
+            {" "}
+            {quantity}
+          </option>
+        );
+      });
 
-  const changeQuantity = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const quantity = parseInt(event.target.value);
-    changeQuantityHandler(id, quantity);
-  };
-
-  return (
-    <div className={cartItem}>
-      <div className={product}>
-        <div className={productImg}>
-          <img src={img} alt={title} />
+    const changeQuantity = (event: React.ChangeEvent<HTMLSelectElement>) => {
+      const quantity = parseInt(event.target.value);
+      changeQuantityHandler(id, quantity);
+    };
+   
+    return (
+      <div className={cartItem}>
+        <div className={product}>
+          <div className={productImg}>
+            <img src={img} alt={title} />
+          </div>
+          <div className={productInfo}>
+            <h2>{title}</h2>
+            <h3>{price} EGP</h3>
+            <Button
+              variant="danger"
+              style={{ color: "white", width: "100px" }}
+              className="mt-auto"
+              onClick={() => removeItemHandler(id)}
+            >
+              Remove
+            </Button>
+          </div>
         </div>
-        <div className={productInfo}>
-          <h2>{title}</h2>
-          <h3>{price} EGP</h3>
-          <Button
-            variant="danger"
-            style={{ color: "white", width: "100px" }}
-            className="mt-auto"
+
+        <div className={cartItemSelection}>
+          <span className="d-block mb-1">Quantity</span>
+          <Form.Select
+            aria-label="Default select example"
+            value={quantity}
+            onChange={changeQuantity}
           >
-            Remove
-          </Button>
+            {renderQuantityList}
+          </Form.Select>
         </div>
       </div>
-
-      <div className={cartItemSelection}>
-        <span className="d-block mb-1">Quantity</span>
-        <Form.Select
-          aria-label="Default select example"
-          value={quantity}
-          onChange={changeQuantity}
-        >
-          {renderQuantityList}
-        </Form.Select>
-      </div>
-    </div>
-  );
-})
+    );
+  }
+);
 
 export default CartItem;
