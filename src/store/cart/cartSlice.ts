@@ -29,7 +29,7 @@ const cartSlice = createSlice({
       } else {
         state.cartItems[id] = 1;
       }
-      state.productFullInfo = [...state.productFullInfo, action.payload];
+      
     },
     cartItemChangeQuantity: (state, action) => {
       state.cartItems[action.payload.id] = action.payload.quantity;

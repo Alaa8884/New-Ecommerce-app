@@ -22,7 +22,7 @@ function ShoppingCart() {
     ...el,
     quantity: cartItems[el.id],
   }));
-
+console.log(products)
   const changeQuantityHandler = useCallback(
     (id: number, quantity: number) => {
       dispatch(cartItemChangeQuantity({ id, quantity }));
@@ -32,7 +32,7 @@ function ShoppingCart() {
 
   const removeItemHandler = useCallback((id: number) => {
     dispatch(cartItemRemoveQuantity(id));
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -50,7 +50,7 @@ function ShoppingCart() {
               changeQuantityHandler={changeQuantityHandler}
               removeItemHandler={removeItemHandler}
             />
-            <CartTotalPrice />
+              <CartTotalPrice products={products} />
           </>
         )}
       </Loading>
