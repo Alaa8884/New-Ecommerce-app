@@ -1,6 +1,9 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { actGetProductsByItem } from "@store/cart/cartSlice";
+import {
+  actGetProductsByItem,
+  cartItemChangeQuantity,
+} from "@store/cart/cartSlice";
 import { Heading } from "@components/common";
 import { Loading } from "@components/feedbback";
 import { CartItemList, CartTotalPrice } from "@components/ecommerce";
@@ -20,12 +23,24 @@ function ShoppingCart() {
     quantity: cartItems[el.id],
   }));
   
+
+  const changeQuantityHandler = useCallback((id: number, quantity: number) => {
+  dispatch(cartItemChangeQuantity({id, quantity}));
+},[dispatch])
+
   return (
     <>
       <Heading>Cart</Heading>
       <Loading loading={loading} error={error}>
-        <CartItemList products={products} />
-        <CartTotalPrice />
+        {!products.length ? (
+          <div className=" d-flex display-5 fw-bold m-auto">Your Cart is empty</div>
+        ) : (
+          <>
+            {" "}
+              <CartItemList products={products} changeQuantityHandler={changeQuantityHandler} />
+            <CartTotalPrice />
+          </>
+        )}
       </Loading>
     </>
   );
