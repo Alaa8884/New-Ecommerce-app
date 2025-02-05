@@ -10,8 +10,8 @@ const actGetProductsByItem = createAsyncThunk(
   async (_, thunkAPI) => {
     const { rejectWithValue, getState, fulfillWithValue } = thunkAPI;
     const { cart } = getState() as RootState;
-
     const itemsId = Object.keys(cart.cartItems);
+    
     if (!itemsId.length) {
       return fulfillWithValue([]);
     }

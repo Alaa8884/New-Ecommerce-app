@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import actGetProductsByItem from "./actGetProductsByItem/actGetProductsByItem";
-import { getCartTotalQuantitySelector } from "./selectors";
+import {
+  getCartTotalQuantitySelector,
+  itemQuantityAvailabilityCheckingSelector,
+} from "./selectors";
 import { TProducts } from "@customTypes/product";
 import { TLoading } from "@customTypes/shared";
 
@@ -29,15 +32,16 @@ const cartSlice = createSlice({
       } else {
         state.cartItems[id] = 1;
       }
-      
     },
     cartItemChangeQuantity: (state, action) => {
       state.cartItems[action.payload.id] = action.payload.quantity;
     },
     cartItemRemoveQuantity: (state, action) => {
       delete state.cartItems[action.payload];
-      state.productFullInfo = state.productFullInfo.filter((item)=> item.id !== action.payload)
-    }
+      state.productFullInfo = state.productFullInfo.filter(
+        (el) => el.id !== action.payload
+      );
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(actGetProductsByItem.pending, (state) => {
@@ -56,7 +60,12 @@ const cartSlice = createSlice({
   },
 });
 
-export { getCartTotalQuantitySelector, actGetProductsByItem };
+
+export {
+  getCartTotalQuantitySelector,
+  actGetProductsByItem,
+  itemQuantityAvailabilityCheckingSelector,
+};
 
 export const { addToCart, cartItemChangeQuantity, cartItemRemoveQuantity } =
   cartSlice.actions;

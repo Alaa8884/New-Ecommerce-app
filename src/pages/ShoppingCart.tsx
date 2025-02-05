@@ -14,6 +14,7 @@ function ShoppingCart() {
   const { cartItems, productFullInfo, loading, error } = useAppSelector(
     (state) => state.cart
   );
+
   useEffect(() => {
     dispatch(actGetProductsByItem());
   }, [dispatch]);
@@ -22,7 +23,7 @@ function ShoppingCart() {
     ...el,
     quantity: cartItems[el.id],
   }));
-console.log(products)
+
   const changeQuantityHandler = useCallback(
     (id: number, quantity: number) => {
       dispatch(cartItemChangeQuantity({ id, quantity }));
@@ -30,9 +31,12 @@ console.log(products)
     [dispatch]
   );
 
-  const removeItemHandler = useCallback((id: number) => {
-    dispatch(cartItemRemoveQuantity(id));
-  }, [dispatch]);
+  const removeItemHandler = useCallback(
+    (id: number) => {
+      dispatch(cartItemRemoveQuantity(id));
+    },
+    [dispatch]
+  );
 
   return (
     <>
@@ -50,7 +54,7 @@ console.log(products)
               changeQuantityHandler={changeQuantityHandler}
               removeItemHandler={removeItemHandler}
             />
-              <CartTotalPrice products={products} />
+            <CartTotalPrice products={products} />
           </>
         )}
       </Loading>
