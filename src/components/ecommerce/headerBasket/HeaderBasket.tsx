@@ -5,13 +5,13 @@ import { getCartTotalQuantitySelector } from "@store/cart/selectors";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-const { basketContainer, basketCount, pumpCartCount, basketCart } = styles;
+const { container, totalCount, pumpCount, iconWrapper } = styles;
 
 function HeaderBasket() {
   const navigate = useNavigate();
   const [isAnimate, setIsAnimate] = useState(false);
   const cartItemsCount = useAppSelector(getCartTotalQuantitySelector);
-  const countStyle = `${basketCount} ${isAnimate ? pumpCartCount : ""}`;
+  const countStyle = `${totalCount} ${isAnimate ? pumpCount : ""}`;
 
   useEffect(() => {
     if (!cartItemsCount) return;
@@ -23,10 +23,12 @@ function HeaderBasket() {
   }, [cartItemsCount]);
 
   return (
-    <div className={basketContainer} onClick={() => navigate("/cart")}>
-      <div className={basketCart}>
+    <div className={container} onClick={() => navigate("/cart")}>
+      <div className={iconWrapper}>
         <CartLogo title="basket icon" />
-        <div className={countStyle}>{cartItemsCount}</div>
+        {cartItemsCount > 0 && (
+          <div className={countStyle}>{cartItemsCount}</div>
+        )}
       </div>
       <h3>Cart</h3>
     </div>

@@ -1,26 +1,26 @@
-.basketContainer {
+.container {
   cursor: pointer;
   display: flex;
   align-items: center;
   align-self: flex-end;
 }
 
-.basketContainer h3 {
-  font-size: 17px;
-  margin-left: 6px;
+.container h3 {
+  font-size: 15px;
+  margin-left: 4px;
   margin-bottom: 0;
 }
 
-.basketCart {
+.iconWrapper {
   position: relative;
 }
 
-.basketCount {
+.totalCount {
   background: #198754;
   position: absolute;
-  height: 23px;
-  width: 23px;
-  top: -16px;
+  height: 20px;
+  width: 20px;
+  top: -13px;
   right: -5px;
   border: 1px solid;
   border-radius: 50%;
@@ -28,13 +28,15 @@
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   line-height: 1.7;
   font-size: 12px;
   color: white;
 }
 
-.pumpCartCount {
+.pumpCount {
   animation: pumping 300ms ease-out;
   -webkit-animation: pumping 300ms ease-out;
 }

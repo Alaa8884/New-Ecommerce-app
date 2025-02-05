@@ -21,3 +21,9 @@
   display: block;
   margin-right: 5px;
 }
+
+.headerRightBar {
+  display: flex; align-items: center;
+  justify-content: center;
+  gap: 5px;
+}

@@ -8,6 +8,7 @@ import Login from "@pages/Login";
 import Register from "@pages/Register";
 import Error from "@pages/Error";
 import ShoppingCart from "@pages/ShoppingCart";
+import WishList from "@pages/WishList";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <ShoppingCart />,
+      },
+      {
+        path: "/wishList",
+        element: <WishList/>,
       },
     ],
   },
