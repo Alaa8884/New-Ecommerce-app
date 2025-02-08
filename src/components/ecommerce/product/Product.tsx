@@ -14,6 +14,7 @@ const Product = memo(
     const dispatch = useAppDispatch();
     const [isBtnDisabled, setIsBtnDisabled] = useState(false);
 
+    
     const currentRemainingQuantity = max - (quantity ?? 0);
     const reachedToMax = currentRemainingQuantity <= 0 ? true : false;
 
